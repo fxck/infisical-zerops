@@ -24,6 +24,7 @@ zerops:
           httpSupport: true
       envVariables:
         NODE_ENV: production
+        ENCRYPTION_KEY: ${db_ENCRYPTION_KEY}
         DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}
         REDIS_URL: redis://${redis_hostname}:6379
         
@@ -39,7 +40,7 @@ zerops:
       base: nodejs@20
       envVariables:
         NODE_ENV: production
-        ENCRYPTION_KEY: ${backend_ENCRYPTION_KEY}
+        ENCRYPTION_KEY: ${db_ENCRYPTION_KEY}
         DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}      
       initCommands:
         - zsc execOnce $appVersionId npm run migration:latest
