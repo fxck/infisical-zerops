@@ -34,7 +34,7 @@ zerops:
         NODE_ENV: production      
       buildCommands:
         - git clone https://github.com/Infisical/infisical.git
-        - cd infisical/backend && npm run ci --production-only
+        - cd infisical/backend && npm ci --only-production
       deployFiles:
         - infisical/backend/~
     run:
