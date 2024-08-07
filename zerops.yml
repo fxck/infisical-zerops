@@ -30,16 +30,19 @@ zerops:
   - setup: migrator
     build:
       base: nodejs@20
+      envVariables:
+        NODE_ENV: production      
       buildCommands:
         - git clone https://github.com/Infisical/infisical.git
+        - cd infisical/backend && npm run ci --production-only
       deployFiles:
         - infisical/backend/~
     run:
       base: nodejs@20
+      envVariables:
+        NODE_ENV: production
+        DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}      
       initCommands:
         - zsc execOnce -l SEED npm run seed
         - zsc execOnce $appVersionId npm run migration:latest    
       start: zsc noop
-      envVariables:
-        NODE_ENV: production
-        DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}
