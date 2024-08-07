@@ -18,15 +18,18 @@ zerops:
         - infisical/backend/~src/lib
     run:
       base: nodejs@20
-      start: npm start
-      ports:
-        - port: 4000
-          httpSupport: true
       envVariables:
         NODE_ENV: production
         ENCRYPTION_KEY: ${db_ENCRYPTION_KEY}
         DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}
         REDIS_URL: redis://${redis_hostname}:6379
+        SMTP_HOST: ${mailpit_hostname}
+        SMTP_PORT: 1025
+        SMTP_REQUIRE_TLS: false
+      ports:
+        - port: 4000
+          httpSupport: true
+      start: npm start
         
   - setup: migrator
     build:
