@@ -39,11 +39,11 @@ zerops:
           npm run build
           npm ci --only-production
       deployFiles:
-        - frontend/~.next
-        - frontend/~package.json
-        - frontend/~next.config.mjs
-        - frontend/~node_modules
-        - frontend/~public
+        - infisical/frontend/~.next
+        - infisical/frontend/~package.json
+        - infisical/frontend/~next.config.mjs
+        - infisical/frontend/~node_modules
+        - infisical/frontend/~public
     run:
       base: nodejs@20
       ports:
