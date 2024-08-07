@@ -41,6 +41,6 @@ zerops:
         NODE_ENV: production
         DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}      
       initCommands:
-        - zsc execOnce -l SEED npm run seed
-        - zsc execOnce $appVersionId npm run migration:latest    
+        - zsc execOnce $appVersionId npm run migration:latest
+        - zsc execOnce -l SEED npm run seed  
       start: zsc noop
