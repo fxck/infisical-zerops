@@ -1,9 +1,21 @@
 zerops:
+  - setup: migrator
+    build:
+      base: nodejs@20
+      buildCommands:
+        - git clone https://github.com/Infisical/infisical.git
+      deployFiles:
+        - ./
+    run:
+      base: nodejs@20
+      initCommands:
+        - zsc execOnce -l SEED npm run seed
+        - zsc execOnce $appVersionId npm run migration:latest    
+      start: zsc noop
+      
   - setup: backend
     build:
       base: nodejs@20
-      prepareCommands:
-        - sudo apk add git      
       buildCommands:
         - git clone https://github.com/Infisical/infisical.git
         - |
@@ -20,9 +32,6 @@ zerops:
         - infisical/backend/~src/lib
     run:
       base: nodejs@20
-      initCommands:
-        - zsc execOnce -l SEED npm run seed
-        - zsc execOnce $appVersionId npm run migration:latest
       start: npm start
       ports:
         - port: 8080
