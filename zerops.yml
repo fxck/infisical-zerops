@@ -13,9 +13,6 @@ zerops:
         - infisical/backend/~dist
         - infisical/backend/~node_modules
         - infisical/backend/~package.json
-        - infisical/backend/~src/db
-        - infisical/backend/~src/services
-        - infisical/backend/~src/lib
     run:
       base: nodejs@20
       envVariables:
