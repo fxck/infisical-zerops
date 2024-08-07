@@ -27,7 +27,30 @@ zerops:
         - port: 4000
           httpSupport: true
       start: npm start
-        
+
+  - setup: frontend
+    build:
+      base: nodejs@20
+      buildCommands:
+        - git clone https://github.com/Infisical/infisical.git
+        - |
+          cd infisical/frontend
+          npm i 
+          npm run build
+          npm ci --only-production
+      deployFiles:
+        - frontend/~.next
+        - frontend/~package.json
+        - frontend/~next.config.mjs
+        - frontend/~node_modules
+        - frontend/~public
+    run:
+      base: nodejs@20
+      ports:
+        - port: 3000
+          httpSupport: true
+      start: npm start
+      
   - setup: migrator
     build:
       base: nodejs@20   
