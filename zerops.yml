@@ -39,6 +39,7 @@ zerops:
       base: nodejs@20
       envVariables:
         NODE_ENV: production
+        ENCRYPTION_KEY: ${backend_ENCRYPTION_KEY}
         DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}      
       initCommands:
         - zsc execOnce $appVersionId npm run migration:latest
