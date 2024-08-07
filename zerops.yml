@@ -1,18 +1,4 @@
 zerops:
-  - setup: migrator
-    build:
-      base: nodejs@20
-      buildCommands:
-        - git clone https://github.com/Infisical/infisical.git
-      deployFiles:
-        - ./
-    run:
-      base: nodejs@20
-      initCommands:
-        - zsc execOnce -l SEED npm run seed
-        - zsc execOnce $appVersionId npm run migration:latest    
-      start: zsc noop
-      
   - setup: backend
     build:
       base: nodejs@20
@@ -40,3 +26,20 @@ zerops:
         NODE_ENV: production
         DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}
         REDIS_URL: redis://${redis_hostname}:6379
+        
+  - setup: migrator
+    build:
+      base: nodejs@20
+      buildCommands:
+        - git clone https://github.com/Infisical/infisical.git
+      deployFiles:
+        - ./
+    run:
+      base: nodejs@20
+      initCommands:
+        - zsc execOnce -l SEED npm run seed
+        - zsc execOnce $appVersionId npm run migration:latest    
+      start: zsc noop
+      envVariables:
+        NODE_ENV: production
+        DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}
