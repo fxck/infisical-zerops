@@ -12,9 +12,10 @@ zerops:
           npm run build
           npm ci --only-production
       deployFiles:
-        - infisical/backend/~./dist
+        - infisical/backend/~dist
         - infisical/backend/~node_modules
         - infisical/backend/~package.json
+        - infisical/backend/~src/db
     run:
       base: nodejs@20
       initCommands:
