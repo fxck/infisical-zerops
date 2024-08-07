@@ -18,3 +18,9 @@ zerops:
         - zsc execOnce -l initialSeed npm run seed
         - zsc execOnce $appVersionId npm run migration:latest
       start: npm start
+      ports:
+        - port: 8080
+          httpSupport: true
+      envVariables:
+        DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}
+        REDIS_URL: redis://${redis_hostname}:6379
