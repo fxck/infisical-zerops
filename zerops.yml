@@ -29,9 +29,7 @@ zerops:
         
   - setup: migrator
     build:
-      base: nodejs@20
-      envVariables:
-        NODE_ENV: production      
+      base: nodejs@20   
       buildCommands:
         - git clone https://github.com/Infisical/infisical.git
         - cd infisical/backend && npm ci --only-production
