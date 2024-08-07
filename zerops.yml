@@ -41,7 +41,7 @@ zerops:
       deployFiles:
         - infisical/frontend/~.next
         - infisical/frontend/~package.json
-        - infisical/frontend/~next.config.mjs
+        - infisical/frontend/~next.config.js
         - infisical/frontend/~node_modules
         - infisical/frontend/~public
     run:
