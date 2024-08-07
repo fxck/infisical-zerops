@@ -33,7 +33,7 @@ zerops:
       buildCommands:
         - git clone https://github.com/Infisical/infisical.git
       deployFiles:
-        - ./
+        - infisical/backend/~
     run:
       base: nodejs@20
       initCommands:
