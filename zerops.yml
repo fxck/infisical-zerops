@@ -27,5 +27,6 @@ zerops:
         - port: 8080
           httpSupport: true
       envVariables:
+        NODE_ENV: production
         DB_CONNECTION_URI: ${db_connectionString}/${db_hostname}
         REDIS_URL: redis://${redis_hostname}:6379
