@@ -2,16 +2,19 @@ zerops:
   - setup: backend
     build:
       base: nodejs@20
+      prepareCommands:
+        - sudo apk add git      
       buildCommands:
+        - git clone https://github.com/Infisical/infisical.git
         - |
-          cd backend
+          cd infisical/backend
           npm i 
           npm run build
           npm ci --only-production
       deployFiles:
-        - ./dist
-        - node_modules
-        - package.json
+        - infisical/backend/~./dist
+        - infisical/backend/~node_modules
+        - infisical/backend/~package.json
     run:
       base: nodejs@20
       initCommands:
