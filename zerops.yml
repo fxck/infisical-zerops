@@ -16,6 +16,7 @@ zerops:
         - infisical/backend/~node_modules
         - infisical/backend/~package.json
         - infisical/backend/~src/db
+        - infisical/backend/~src/services
     run:
       base: nodejs@20
       initCommands:
