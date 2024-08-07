@@ -1,0 +1,20 @@
+zerops:
+  - setup: backend
+    build:
+      base: nodejs@20
+      buildCommands:
+        - |
+          cd backend
+          npm i 
+          npm run build
+          npm ci --only-production
+      deployFiles:
+        - ./dist
+        - node_modules
+        - package.json
+    run:
+      base: nodejs@20
+      initCommands:
+        - zsc execOnce -l initialSeed npm run seed
+        - zsc execOnce $appVersionId npm run migration:latest
+      start: npm start
