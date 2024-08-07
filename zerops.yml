@@ -20,7 +20,7 @@ zerops:
       base: nodejs@20
       start: npm start
       ports:
-        - port: 8080
+        - port: 4000
           httpSupport: true
       envVariables:
         NODE_ENV: production
