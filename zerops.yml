@@ -21,7 +21,7 @@ zerops:
     run:
       base: nodejs@20
       initCommands:
-        - zsc execOnce -l initialSeed npm run seed
+        - zsc execOnce -l SEED npm run seed
         - zsc execOnce $appVersionId npm run migration:latest
       start: npm start
       ports:
